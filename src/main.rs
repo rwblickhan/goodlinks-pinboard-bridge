@@ -10,6 +10,7 @@ struct Link {
     url: String,
     title: Option<String>,
     summary: Option<String>,
+    starred: bool,
 }
 
 fn main() -> anyhow::Result<()> {
@@ -24,6 +25,10 @@ fn main() -> anyhow::Result<()> {
     let links: Vec<Link> = serde_json::from_str(contents.as_str())?;
 
     for link in links {
+        if !link.starred {
+            continue;
+        }
+
         let url = urlencoding::encode(link.url.as_str()).to_string();
         let title =
             urlencoding::encode(link.title.unwrap_or("FIXME".to_string()).as_str()).to_string();
