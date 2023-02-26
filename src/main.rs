@@ -37,7 +37,7 @@ fn main() -> anyhow::Result<()> {
 
         cmd!(
             sh,
-            "https https://api.pinboard.in/v1/posts/add?url={url}&description={title}&extened={description}&auth_token={pinboard_api_token}"
+            "https https://api.pinboard.in/v1/posts/add?url={url}&description={title}&extended={description}&auth_token={pinboard_api_token}"
         ).run()?;
     }
 
